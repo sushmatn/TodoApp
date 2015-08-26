@@ -27,3 +27,26 @@ Additional Functionality:
 *	Added a share intent button to share the todo List items.
 
 #Gif Walkthrough
+
+Add Item:
+
+![addItem.gif](https://github.com/sushmatn/TodoApp/blob/master/addItem.gif)
+
+
+Edit Item:
+
+![editItem.gif](https://github.com/sushmatn/TodoApp/blob/master/editItem.gif)
+
+Persistence:
+
+![persistence.gif](https://github.com/sushmatn/TodoApp/blob/master/persistence.gif)
+
+
+Check completed tasks:
+
+![clearCompleted.gif](https://github.com/sushmatn/TodoApp/blob/master/clearCompleted.gif)
+
+
+Share the todo List:
+
+![share.gif](https://github.com/sushmatn/TodoApp/blob/master/share.gif)
