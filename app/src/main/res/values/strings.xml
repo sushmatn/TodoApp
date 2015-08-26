@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">TodoApp</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_clearCompleted">Clear completed tasks</string>
+    <string name="action_share">Share</string>
+    <string name="add">Add</string>
+    <string name="additem">Add Item</string>
+    <string name="title_activity_item_details">Add New Task</string>
+    <string name="tasktodo">Task to do</string>
+    <string name="taskNotes">Notes</string>
+    <string name="dueBy">Task due by</string>
+    <string name="enterTaskDetails">    Enter task details    </string>
+
+    <string name="lowPriority">Low Priority</string>
+    <string name="mediumPriority">Medium Priority</string>
+    <string name="highPriority">High Priority</string>
+
+    <string name="btnDone">Done</string>
+    <string name="btnCancel">Cancel</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="chooseDate">Choose date</string>
+
+</resources>

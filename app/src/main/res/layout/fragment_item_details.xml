@@ -1,0 +1,116 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="200dp"
+    tools:context="com.sushmanayak.android.todoapp.ItemDetailsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/todoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/tasktodo"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/todoNotes_minHeight">
+
+            <EditText
+                android:id="@+id/todoDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/taskNotes"
+                android:maxLines="5"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dueBy" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/todoDueDate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Enter Date" />
+
+            <!-- <TextView
+                 android:id="@+id/todoDueTime"
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:text="Enter Time" />-->
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/priorityGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/lowPriority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/lowPriority"
+                android:textColor="@color/lowPriority" />
+
+            <RadioButton
+                android:id="@+id/mediumPriority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mediumPriority"
+                android:textColor="@color/mediumPriority" />
+
+            <RadioButton
+                android:id="@+id/highPriority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/highPriority"
+                android:textColor="@color/highPriority" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/btnCancel" />
+
+            <Button
+                android:id="@+id/doneButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/btnDone" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+

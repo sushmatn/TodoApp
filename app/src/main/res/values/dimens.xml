@@ -1,0 +1,12 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">10dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="layout_margin">5dp</dimen>
+    <dimen name="floating_button_margin">20dp</dimen>
+    <dimen name="minimum_spacing">2dp</dimen>
+    <dimen name="todoNotes_minHeight">100dp</dimen>
+    <dimen name="priorityFillWidth">4dp</dimen>
+    <dimen name="priorityBtnMargin">5dp</dimen>
+    <dimen name="dividerWidth">0.5dp</dimen>
+</resources>
