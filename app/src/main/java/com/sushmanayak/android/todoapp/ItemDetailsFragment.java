@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.sushmanayak.android.todoapp.Db.TodoList;
 import com.sushmanayak.android.todoapp.model.TodoItem;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 /**
@@ -32,6 +33,7 @@ public class ItemDetailsFragment extends DialogFragment {
     EditText todoDetails;
     RadioGroup priorityGroup;
     TextView todoDueDate;
+    TextView todoDueTime;
     RadioButton lowPriority;
     RadioButton mediumPriority;
     RadioButton highPriority;
@@ -40,6 +42,7 @@ public class ItemDetailsFragment extends DialogFragment {
 
     private static final String TASK_INDEX = "SimpleTodo.TaskIndex";
     private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_TIME = 1;
     private static final int NEW_TASK_INDEX = -1;
 
     enum Action {
@@ -75,6 +78,7 @@ public class ItemDetailsFragment extends DialogFragment {
         todoTitle = (EditText) v.findViewById(R.id.todoTitle);
         todoDetails = (EditText) v.findViewById(R.id.todoDetails);
         todoDueDate = (TextView) v.findViewById(R.id.todoDueDate);
+        todoDueTime = (TextView) v.findViewById(R.id.todoDueTime);
         priorityGroup = (RadioGroup) v.findViewById(R.id.priorityGroup);
         lowPriority = (RadioButton) v.findViewById(R.id.lowPriority);
         mediumPriority = (RadioButton) v.findViewById(R.id.mediumPriority);
@@ -91,7 +95,17 @@ public class ItemDetailsFragment extends DialogFragment {
             public void onClick(View v) {
                 DateFragment dialog = DateFragment.newInstance(mItem.getDate());
                 dialog.setTargetFragment(ItemDetailsFragment.this, REQUEST_DATE);
-                dialog.show(getFragmentManager(),"DialogDate");
+                dialog.show(getFragmentManager(), "DialogDate");
+            }
+        });
+
+        todoDueTime.setPaintFlags(todoDueTime.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        todoDueTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimeFragment dialog = TimeFragment.newInstance(mItem.getDate());
+                dialog.setTargetFragment(ItemDetailsFragment.this, REQUEST_TIME);
+                dialog.show(getFragmentManager(),"DialogTime");
             }
         });
 
@@ -147,14 +161,22 @@ public class ItemDetailsFragment extends DialogFragment {
             mItem.setDate(taskDate);
             todoDueDate.setText(String.format("%1$tY %1$tb %1$td", taskDate));
         }
+        if(requestCode == REQUEST_TIME)
+        {
+            Date taskDate = (Date)data.getSerializableExtra(TimeFragment.EXTRA_TIME);
+            mItem.setDate(taskDate);
+            todoDueTime.setText(android.text.format.DateFormat.format("kk:mm:ss", taskDate));
+        }
     }
 
     private void updateUI() {
 
         todoTitle.setText(mItem.getTitle());
         todoDetails.setText(mItem.getDescription());
-        if(mItem.getDate() != null)
+        if(mItem.getDate() != null) {
             todoDueDate.setText(String.format("%1$tY %1$tb %1$td", mItem.getDate()));
+            todoDueTime.setText(android.text.format.DateFormat.format("kk:mm:ss", mItem.getDate()));
+        }
 
         if (mItem.getPriority() == 2)
             highPriority.setChecked(true);

@@ -3,69 +3,70 @@ package com.sushmanayak.android.todoapp;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.support.v4.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
-import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-
 /**
- * Created by SushmaNayak on 8/25/2015.
+ * Created by SushmaNayak on 8/26/2015.
  */
-public class DateFragment extends DialogFragment {
+public class TimeFragment extends DialogFragment{
 
-    public static final String EXTRA_DATE = "com.SushmaNayak.android.SimpleTodo.date";
     private static final String ARG_DATE = "SimpleTodo.Date";
-    DatePicker mDatePicker;
-    int mHour;
-    int mMinute;
+    public static final String EXTRA_TIME = "com.SushmaNayak.android.SimpleTodo.time";
 
-    public static DateFragment newInstance(Date date) {
+    TimePicker mTimePicker;
+    Date mDate;
+    int mYear;
+    int mMonth;
+    int mDay;
+
+    public static TimeFragment newInstance(Date date) {
         Bundle args = new Bundle();
         args.putSerializable(ARG_DATE, date);
 
-        DateFragment fragment = new DateFragment();
+        TimeFragment fragment = new TimeFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        Date date = (Date) getArguments().getSerializable(ARG_DATE);
+        mDate = (Date) getArguments().getSerializable(ARG_DATE);
 
         // If date is not set, then display current date
-        if(date == null)
-            date = new Date();
+        if(mDate == null)
+            mDate = new Date();
 
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        mHour = calendar.get(Calendar.HOUR_OF_DAY);
-        mMinute = calendar.get(Calendar.MINUTE);
+        calendar.setTime(mDate);
+        mYear = calendar.get(Calendar.YEAR);
+        mMonth = calendar.get(Calendar.MONTH);
+        mDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
 
-        mDatePicker = new DatePicker(getActivity());
-        mDatePicker.setCalendarViewShown(false);
-        mDatePicker.init(year, month, day, null);
+        mTimePicker = new TimePicker(getActivity());
+        mTimePicker.setIs24HourView(true);
+        mTimePicker.setCurrentHour(hour);
+        mTimePicker.setCurrentMinute(minute);
 
         return new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.chooseDate)
-                .setView(mDatePicker)
+                .setView(mTimePicker)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        int year = mDatePicker.getYear();
-                        int month = mDatePicker.getMonth();
-                        int day = mDatePicker.getDayOfMonth();
-                        Date date = new GregorianCalendar(year,month,day,mHour,mMinute).getTime();
+                        int hour = mTimePicker.getCurrentHour();
+                        int minute = mTimePicker.getCurrentMinute();
+                        Date date = new GregorianCalendar(mYear,mMonth,mDay,hour,minute).getTime();
                         sendResult(Activity.RESULT_OK,date);
                     }
                 })
@@ -77,7 +78,7 @@ public class DateFragment extends DialogFragment {
             return;
 
         Intent intent = new Intent();
-        intent.putExtra(EXTRA_DATE, date);
+        intent.putExtra(EXTRA_TIME, date);
 
         getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, intent);
     }
