@@ -1,5 +1,6 @@
 package com.sushmanayak.android.todoapp.model;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -78,6 +79,6 @@ public class TodoItem {
         if (mDate == null)
             return "\nTask: " + mTitle + "\n" + "Details: " + mDescription;
         else
-            return "\nTask: " + mTitle + "\n" + "Details: " + mDescription + "\n" + "Due by: " + String.format("%1$tY %1$tb %1$td", mDate);
+            return "\nTask: " + mTitle + "\n" + "Details: " + mDescription + "\n" + "Due by: " + DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.SHORT).format(mDate);
     }
 }

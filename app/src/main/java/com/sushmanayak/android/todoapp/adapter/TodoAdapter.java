@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.sushmanayak.android.todoapp.R;
 import com.sushmanayak.android.todoapp.model.TodoItem;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -125,7 +127,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoHolder> {
             todoDetails.setVisibility(mItem.getDescription().length() > 0 ? View.VISIBLE : View.GONE);
 
             if (mItem.getDate() != null) {
-                todoDueDate.setText(String.format("%1$tY %1$tb %1$td", mItem.getDate()));
+                todoDueDate.setText(DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.SHORT).format(mItem.getDate()));
                 todoDueDate.setVisibility(View.VISIBLE);
             } else
                 todoDueDate.setVisibility(View.GONE);

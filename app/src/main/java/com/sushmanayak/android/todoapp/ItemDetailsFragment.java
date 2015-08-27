@@ -62,6 +62,7 @@ public class ItemDetailsFragment extends DialogFragment {
 
     public interface ItemDetailsListener {
         void onAddItem(TodoItem item);
+
         void onUpdateItem(TodoItem item);
     }
 
@@ -105,7 +106,7 @@ public class ItemDetailsFragment extends DialogFragment {
             public void onClick(View v) {
                 TimeFragment dialog = TimeFragment.newInstance(mItem.getDate());
                 dialog.setTargetFragment(ItemDetailsFragment.this, REQUEST_TIME);
-                dialog.show(getFragmentManager(),"DialogTime");
+                dialog.show(getFragmentManager(), "DialogTime");
             }
         });
 
@@ -134,7 +135,7 @@ public class ItemDetailsFragment extends DialogFragment {
         public void onClick(View v) {
 
             // Verify that the title or notes have been added
-            if(todoTitle.getText().length() > 0 || todoDetails.getText().length() > 0) {
+            if (todoTitle.getText().length() > 0 || todoDetails.getText().length() > 0) {
                 mItem.setTitle(todoTitle.getText().toString());
                 mItem.setDescription(todoDetails.getText().toString());
                 mItem.setPriority(getPriority());
@@ -152,20 +153,18 @@ public class ItemDetailsFragment extends DialogFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode != Activity.RESULT_OK)
+        if (resultCode != Activity.RESULT_OK)
             return;
 
-        if(requestCode == REQUEST_DATE)
-        {
-            Date taskDate = (Date)data.getSerializableExtra(DateFragment.EXTRA_DATE);
+        if (requestCode == REQUEST_DATE) {
+            Date taskDate = (Date) data.getSerializableExtra(DateFragment.EXTRA_DATE);
             mItem.setDate(taskDate);
-            todoDueDate.setText(String.format("%1$tY %1$tb %1$td", taskDate));
+            todoDueDate.setText(DateFormat.getDateInstance().format(taskDate));
         }
-        if(requestCode == REQUEST_TIME)
-        {
-            Date taskDate = (Date)data.getSerializableExtra(TimeFragment.EXTRA_TIME);
+        if (requestCode == REQUEST_TIME) {
+            Date taskDate = (Date) data.getSerializableExtra(TimeFragment.EXTRA_TIME);
             mItem.setDate(taskDate);
-            todoDueTime.setText(android.text.format.DateFormat.format("kk:mm:ss", taskDate));
+            todoDueTime.setText(DateFormat.getTimeInstance().format(taskDate));
         }
     }
 
@@ -173,9 +172,9 @@ public class ItemDetailsFragment extends DialogFragment {
 
         todoTitle.setText(mItem.getTitle());
         todoDetails.setText(mItem.getDescription());
-        if(mItem.getDate() != null) {
-            todoDueDate.setText(String.format("%1$tY %1$tb %1$td", mItem.getDate()));
-            todoDueTime.setText(android.text.format.DateFormat.format("kk:mm:ss", mItem.getDate()));
+        if (mItem.getDate() != null) {
+            todoDueDate.setText(DateFormat.getDateInstance().format(mItem.getDate()));
+            todoDueTime.setText(DateFormat.getTimeInstance(DateFormat.SHORT).format(mItem.getDate()));
         }
 
         if (mItem.getPriority() == 2)
@@ -186,8 +185,7 @@ public class ItemDetailsFragment extends DialogFragment {
             lowPriority.setChecked(true);
     }
 
-    private int getPriority()
-    {
+    private int getPriority() {
         int radioButtonID = priorityGroup.getCheckedRadioButtonId();
         View radioButton = priorityGroup.findViewById(radioButtonID);
         return priorityGroup.indexOfChild(radioButton);

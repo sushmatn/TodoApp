@@ -54,7 +54,6 @@ public class TimeFragment extends DialogFragment{
         int minute = calendar.get(Calendar.MINUTE);
 
         mTimePicker = new TimePicker(getActivity());
-        mTimePicker.setIs24HourView(true);
         mTimePicker.setCurrentHour(hour);
         mTimePicker.setCurrentMinute(minute);
 
