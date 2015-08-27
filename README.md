@@ -36,12 +36,12 @@ Here's a walkthrough of implemented user stories:
 
 Edit Item:
 
-![editItem.gif](https://github.com/sushmatn/TodoApp/blob/master/editItem.gif)
+![editItem.gif](https://github.com/sushmatn/TodoApp/blob/master/editItem2.gif)
 
 
 Share the todo List:
 
-![share.gif](https://github.com/sushmatn/TodoApp/blob/master/share.gif)
+![share.gif](https://github.com/sushmatn/TodoApp/blob/master/share2.gif)
 
 
 Notification:
@@ -51,7 +51,7 @@ Notification:
 
 Add new Item:
 
-![addItem.gif](https://github.com/sushmatn/TodoApp/blob/master/addItem.gif)
+![addItem.gif](https://github.com/sushmatn/TodoApp/blob/master/addItem2.gif)
 
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
