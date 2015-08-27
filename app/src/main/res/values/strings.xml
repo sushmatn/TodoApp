@@ -11,6 +11,9 @@
     <string name="taskNotes">Notes</string>
     <string name="dueBy">Task due by</string>
     <string name="enterTaskDetails">    Enter task details    </string>
+    <string name="setNotification">Set reminder on due date</string>
+    <string name="setTime">Please set the date and time</string>
+    <string name="taskDue">Task is due</string>
 
     <string name="lowPriority">Low Priority</string>
     <string name="mediumPriority">Medium Priority</string>

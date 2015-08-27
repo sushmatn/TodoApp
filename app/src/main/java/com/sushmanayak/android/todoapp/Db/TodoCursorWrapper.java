@@ -22,11 +22,12 @@ public class TodoCursorWrapper extends CursorWrapper {
         String desc = getString(getColumnIndex(TodoDbSchema.TodoTable.Cols.DESCRIPTION));
         long date = getLong(getColumnIndex(TodoDbSchema.TodoTable.Cols.DATE));
         int priority = getInt(getColumnIndex(TodoDbSchema.TodoTable.Cols.PRIORITY));
+        boolean notify = getInt(getColumnIndex(TodoDbSchema.TodoTable.Cols.NOTIFY)) == 1 ? true : false;
         boolean isCompleted = getInt(getColumnIndex(TodoDbSchema.TodoTable.Cols.COMPLETED)) == 1 ? true : false;
 
         if (date == 0)
-            return new TodoItem(UUID.fromString(uuidString), title, desc, null, priority, isCompleted);
+            return new TodoItem(UUID.fromString(uuidString), title, desc, null, priority, notify, isCompleted);
         else
-            return new TodoItem(UUID.fromString(uuidString), title, desc, new Date(date), priority, isCompleted);
+            return new TodoItem(UUID.fromString(uuidString), title, desc, new Date(date), priority, notify, isCompleted);
     }
 }

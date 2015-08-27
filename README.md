@@ -25,8 +25,10 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
+* [x]   Added an option to set the time along with the date when the task is due.
 * [x]	Added a checkbox to mark a task as completed. Added an option to clear all ‘completed’ tasks.
 * [x]	Added a share intent button to share the todo List items.
+* [x]   Added an option to get a notification on the due date when the user sets a reminder.
 
 ## Video Walkthrough 
 
@@ -37,19 +39,14 @@ Edit Item:
 ![editItem.gif](https://github.com/sushmatn/TodoApp/blob/master/editItem.gif)
 
 
-Check completed tasks:
-
-![clearCompleted.gif](https://github.com/sushmatn/TodoApp/blob/master/clearCompleted.gif)
-
-
 Share the todo List:
 
 ![share.gif](https://github.com/sushmatn/TodoApp/blob/master/share.gif)
 
 
-Persistence:
+Notification:
 
-![persistence.gif](https://github.com/sushmatn/TodoApp/blob/master/persistence.gif)
+![notify.gif](https://github.com/sushmatn/TodoApp/blob/master/notify.gif)
 
 
 Add new Item:

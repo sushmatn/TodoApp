@@ -39,6 +39,7 @@ public class TodoList {
         else
             values.put(TodoDbSchema.TodoTable.Cols.DATE, 0);
         values.put(TodoDbSchema.TodoTable.Cols.PRIORITY, item.getPriority());
+        values.put(TodoDbSchema.TodoTable.Cols.NOTIFY, item.getNotify());
         values.put(TodoDbSchema.TodoTable.Cols.COMPLETED, item.isCompleted() ? 1 : 0);
 
         return values;

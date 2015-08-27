@@ -56,6 +56,14 @@
                 android:textColor="@color/colorAccent" />
         </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/alarmSet"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/layout_margin"
+            android:src="@drawable/ic_alarm" android:layout_gravity="center"
+            android:visibility="gone"/>
+
     </LinearLayout>
 
     <View

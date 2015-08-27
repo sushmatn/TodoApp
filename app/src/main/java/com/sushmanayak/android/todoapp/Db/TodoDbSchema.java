@@ -13,6 +13,7 @@ public class TodoDbSchema {
             public static final String DESCRIPTION = "desc";
             public static final String DATE = "date";
             public static final String PRIORITY = "priority";
+            public static final String NOTIFY = "notify";
             public static final String COMPLETED = "completed";
         }
     }

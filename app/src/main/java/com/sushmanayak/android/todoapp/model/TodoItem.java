@@ -13,20 +13,23 @@ public class TodoItem {
     private String mDescription;
     private Date mDate;
     private int mPriority;
+    private boolean mNotify;
     private boolean mCompleted;
 
     public TodoItem() {
         mId = UUID.randomUUID();
         mPriority = 0;
+        mNotify = false;
         mCompleted = false;
     }
 
-    public TodoItem(UUID Id, String title, String description, Date date, int priority, boolean completed) {
+    public TodoItem(UUID Id, String title, String description, Date date, int priority, boolean notify, boolean completed) {
         mId = Id;
         mTitle = title;
         mDescription = description;
         mDate = date;
         mPriority = priority;
+        mNotify = notify;
         mCompleted = completed;
     }
 
@@ -60,6 +63,14 @@ public class TodoItem {
 
     public void setDate(Date mDate) {
         this.mDate = mDate;
+    }
+
+    public boolean getNotify() {
+        return mNotify;
+    }
+
+    public void setNotify(boolean mNotify) {
+        this.mNotify = mNotify;
     }
 
     public boolean isCompleted() {

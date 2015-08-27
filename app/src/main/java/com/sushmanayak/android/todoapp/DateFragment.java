@@ -44,7 +44,7 @@ public class DateFragment extends DialogFragment {
         if(date == null)
             date = new Date();
 
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);

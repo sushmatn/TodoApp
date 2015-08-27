@@ -24,6 +24,7 @@ public class TodoBaseHelper extends SQLiteOpenHelper {
                         TodoDbSchema.TodoTable.Cols.DESCRIPTION + ", " +
                         TodoDbSchema.TodoTable.Cols.DATE + ", " +
                         TodoDbSchema.TodoTable.Cols.PRIORITY + ", " +
+                        TodoDbSchema.TodoTable.Cols.NOTIFY + ", " +
                         TodoDbSchema.TodoTable.Cols.COMPLETED +
                         ")"
         );

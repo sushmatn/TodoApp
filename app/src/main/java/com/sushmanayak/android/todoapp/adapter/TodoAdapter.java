@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sushmanayak.android.todoapp.R;
@@ -70,6 +71,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoHolder> {
         CheckBox todoCompleted;
         View todoItemGroup;
         TodoItemListeners listener;
+        ImageView alarmSet;
 
         public TodoHolder(View itemView) {
             super(itemView);
@@ -87,6 +89,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoHolder> {
             todoCompleted = (CheckBox) itemView.findViewById(R.id.todoCompleted);
             viewPriority = (View) itemView.findViewById(R.id.todoPriority);
             todoItemGroup = (View) itemView.findViewById(R.id.todoItemGroup);
+            alarmSet = (ImageView) itemView.findViewById(R.id.alarmSet);
         }
 
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -133,6 +136,8 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoHolder> {
                 todoDueDate.setVisibility(View.GONE);
 
             todoCompleted.setChecked(mItem.isCompleted());
+
+            alarmSet.setVisibility(mItem.getNotify() ? View.VISIBLE : View.INVISIBLE);
 
             int priority = mItem.getPriority();
             if (priority == 2)

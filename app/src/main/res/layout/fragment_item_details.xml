@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:minWidth="200dp"
     tools:context="com.sushmanayak.android.todoapp.ItemDetailsFragment">
 
     <LinearLayout
@@ -36,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/taskNotes"
-                android:maxLines="5"
+                android:maxLines="4"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
         </android.support.design.widget.TextInputLayout>
 
@@ -49,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin">
+            android:layout_marginTop="@dimen/layout_margin">
 
             <TextView
                 android:id="@+id/todoDueDate"
@@ -68,6 +67,14 @@
                 android:layout_height="match_parent"
                 android:text="Enter Time" />
         </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/setNotification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/setNotification"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
         <RadioGroup
             android:id="@+id/priorityGroup"
