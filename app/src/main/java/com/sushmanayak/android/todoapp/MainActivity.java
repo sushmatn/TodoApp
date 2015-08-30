@@ -20,6 +20,7 @@ import com.sushmanayak.android.todoapp.adapter.TodoAdapter;
 import com.sushmanayak.android.todoapp.model.TodoItem;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity
@@ -65,6 +66,9 @@ public class MainActivity extends AppCompatActivity
         updateUI();
     }
 
+    /**
+     * Display the Edit task dialog
+     */
     public void EditItem(int index) {
         ItemDetailsFragment taskDetails = ItemDetailsFragment.newInstance(index);
         taskDetails.show(getSupportFragmentManager(), EDIT_TASK_DIALOG);
@@ -101,6 +105,9 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Delete all checked tasks
+     */
     private void deleteAllCompletedTasks() {
         ArrayList<TodoItem> todoItems = TodoList.get(this).getTodoItems();
         for (TodoItem item : todoItems) {
@@ -110,6 +117,9 @@ public class MainActivity extends AppCompatActivity
         updateUI();
     }
 
+    /**
+     * Set the adapter
+     */
     private void updateUI() {
         ArrayList<TodoItem> todoItems = mTodoList.getTodoItems();
         if (mTodoAdapter == null) {
@@ -121,7 +131,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    // Call to update the share intent
+    /**
+     * Start an activity with ACTION_SEND
+     */
     private void setShareIntent() {
 
         String taskList = "";
@@ -160,6 +172,9 @@ public class MainActivity extends AppCompatActivity
         mTodoList.updateItem(item);
     }
 
+    /**
+     * Remove the task from the database on LongClick
+     */
     @Override
     public void onLongItemClick(int position) {
         mTodoList.removeItem(mTodoList.getTodoItems().get(position));
@@ -167,8 +182,30 @@ public class MainActivity extends AppCompatActivity
         refreshTaskList();
     }
 
+    /**
+     * Update the changes to the task details in the database
+     * and update the UI
+     */
     public void onUpdateItem(TodoItem item) {
         TodoList.get(this).updateItem(item);
         updateUI();
+    }
+
+    /**
+     * Set or reset the alarm for notification
+     */
+    public void onUpdateNotification(TodoItem task)
+    {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(task.getDate());
+        Intent alertIntent = new Intent(this, AlertReceiver.class);
+        alertIntent.putExtra(Intent.EXTRA_TEXT, task.getTitle() + " " + task.getDescription());
+        PendingIntent sender = PendingIntent.getBroadcast(this, (int) task.getId().getLeastSignificantBits(), alertIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
+        if (task.getNotify()) {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
+        } else
+            alarmManager.cancel(sender);
     }
 }

@@ -13,31 +13,62 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/todoTitle"
-                android:layout_width="match_parent"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/tasktodo"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_weight="1">
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/todoNotes_minHeight">
+                <EditText
+                    android:id="@+id/todoTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/tasktodo"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/todoDetails"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/micEnterTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:hint="@string/taskNotes"
-                android:maxLines="4"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_marginRight="@dimen/layout_margin"
+                android:maxHeight="@dimen/micIconMaxHeight"
+                android:src="@drawable/ic_mic" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="@dimen/todoNotes_minHeight">
+
+                <EditText
+                    android:id="@+id/todoDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/taskNotes"
+                    android:maxLines="4"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/micEnterNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/layout_margin"
+                android:maxHeight="@dimen/micIconMaxHeight"
+                android:src="@drawable/ic_mic" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -72,9 +103,9 @@
             android:id="@+id/setNotification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:text="@string/setNotification"
-            android:visibility="gone"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+            android:visibility="gone" />
 
         <RadioGroup
             android:id="@+id/priorityGroup"

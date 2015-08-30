@@ -5,8 +5,9 @@
     <dimen name="layout_margin">5dp</dimen>
     <dimen name="floating_button_margin">20dp</dimen>
     <dimen name="minimum_spacing">2dp</dimen>
-    <dimen name="todoNotes_minHeight">100dp</dimen>
+    <dimen name="todoNotes_minHeight">80dp</dimen>
     <dimen name="priorityFillWidth">4dp</dimen>
     <dimen name="priorityBtnMargin">5dp</dimen>
     <dimen name="dividerWidth">0.5dp</dimen>
+    <dimen name="micIconMaxHeight">32dp</dimen>
 </resources>

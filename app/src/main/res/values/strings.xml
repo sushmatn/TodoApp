@@ -22,7 +22,8 @@
     <string name="btnDone">Done</string>
     <string name="btnCancel">Cancel</string>
 
-<!-- TODO: Remove or change this placeholder text -->
     <string name="chooseDate">Choose date</string>
+    <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
+    <string name="speech_prompt">Say something&#8230;</string>
 
 </resources>
