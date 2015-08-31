@@ -29,8 +29,6 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoHolder> {
     public interface TodoItemListeners {
         void onItemClick(int position);
 
-        void onLongItemClick(int position);
-
         void onItemChecked(TodoItem item);
     }
 
@@ -61,7 +59,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoHolder> {
     }
 
     class TodoHolder extends RecyclerView.ViewHolder
-            implements CompoundButton.OnCheckedChangeListener, View.OnLongClickListener, View.OnClickListener {
+            implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
         TodoItem mItem;
         View viewPriority;
@@ -79,7 +77,6 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoHolder> {
             InitViews(itemView);
             todoCompleted.setOnCheckedChangeListener(this);
             todoItemGroup.setOnClickListener(this);
-            todoItemGroup.setOnLongClickListener(this);
         }
 
         private void InitViews(View itemView) {
@@ -113,12 +110,6 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoHolder> {
         public void onClick(View v) {
             listener = (TodoItemListeners) mContext;
             listener.onItemClick(getAdapterPosition());
-        }
-
-        public boolean onLongClick(View v) {
-            listener = (TodoItemListeners) mContext;
-            listener.onLongItemClick(getAdapterPosition());
-            return true;
         }
 
         public void bindItem(TodoItem item) {

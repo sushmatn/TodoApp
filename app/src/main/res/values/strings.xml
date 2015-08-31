@@ -23,6 +23,7 @@
     <string name="btnCancel">Cancel</string>
 
     <string name="chooseDate">Choose date</string>
+    <string name="toastTaskDeleted">Task was deleted</string>
     <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
     <string name="speech_prompt">Say something&#8230;</string>
 

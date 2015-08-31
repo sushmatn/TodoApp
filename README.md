@@ -29,6 +29,7 @@ The following **additional** features are implemented:
 * [x]	Added a checkbox to mark a task as completed. Added an option to clear all ‘completed’ tasks.
 * [x]	Added a share intent button to share the todo List items.
 * [x]   Added an option to get a notification on the due date when the user sets a reminder.
+* [x]   Swipe to delete a task.
 * [x]   Added an option to accept microphone input to enter task title and task details.
 
 ## Video Walkthrough 
@@ -39,6 +40,10 @@ Here's a walkthrough of implemented user stories:
 Add new Item:
 
 ![newItem.gif](https://github.com/sushmatn/TodoApp/blob/master/newItem.gif)
+
+Delete Item: Swipe left to delete
+
+![deleteItem.gif](https://github.com/sushmatn/TodoApp/blob/master/deleteItem.gif)
 
 Edit Item:
 

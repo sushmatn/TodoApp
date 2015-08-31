@@ -11,9 +11,11 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.sushmanayak.android.todoapp.Db.TodoList;
 import com.sushmanayak.android.todoapp.adapter.TodoAdapter;
@@ -21,7 +23,6 @@ import com.sushmanayak.android.todoapp.model.TodoItem;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity
         implements ItemDetailsFragment.ItemDetailsListener, TodoAdapter.TodoItemListeners {
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity
 
     private static final int NEW_TASK_INDEX = -1;
     private static final String EDIT_TASK_DIALOG = "Edit task";
-    private static final int ANIM_DURATION = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +45,7 @@ public class MainActivity extends AppCompatActivity
         mTodoRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mTodoRecyclerView.setHasFixedSize(true);
 
-        DefaultItemAnimator animator = new DefaultItemAnimator();
-        animator.setAddDuration(ANIM_DURATION);
-        animator.setRemoveDuration(ANIM_DURATION);
-        mTodoRecyclerView.setItemAnimator(animator);
+        mTouchHelper.attachToRecyclerView(mTodoRecyclerView);
 
         mTodoList = TodoList.get(this);
 
@@ -104,6 +101,24 @@ public class MainActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
+
+    ItemTouchHelper mTouchHelper = new ItemTouchHelper(
+            new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+
+                public boolean onMove(RecyclerView recyclerView,
+                                      RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                    return true;
+                }
+
+                public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                    // remove from adapter
+                    mTodoList.removeItem(mTodoList.getTodoItems().get(viewHolder.getAdapterPosition()));
+                    mTodoAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                    refreshTaskList();
+                    Toast snack = Toast.makeText(getApplication(),getResources().getString(R.string.toastTaskDeleted), Toast.LENGTH_SHORT);
+                    snack.show();
+                }
+            });
 
     /**
      * Delete all checked tasks
@@ -173,16 +188,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * Remove the task from the database on LongClick
-     */
-    @Override
-    public void onLongItemClick(int position) {
-        mTodoList.removeItem(mTodoList.getTodoItems().get(position));
-        mTodoAdapter.notifyItemRemoved(position);
-        refreshTaskList();
-    }
-
-    /**
      * Update the changes to the task details in the database
      * and update the UI
      */
@@ -194,8 +199,7 @@ public class MainActivity extends AppCompatActivity
     /**
      * Set or reset the alarm for notification
      */
-    public void onUpdateNotification(TodoItem task)
-    {
+    public void onUpdateNotification(TodoItem task) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(task.getDate());
         Intent alertIntent = new Intent(this, AlertReceiver.class);
